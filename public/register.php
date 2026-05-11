@@ -8,7 +8,7 @@ $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    if (!csrf_verify($_POST['csrf'] ?? '')) {
+    if (!csrfVerify($_POST['csrf'] ?? '')) {
         die('CSRF failed');
     }
 
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? '';
 
     if (!$email || !$password) {
-        $error = "Missing fields";
+        $error = "Puste pole(a)";
     } else {
 
         // hash password
@@ -33,12 +33,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
 
         } catch (PDOException $e) {
-            $error = "User already exists or DB error";
+            $error = "Użytkownik istnieje, lub błąd baz danych.";
         }
     }
 }
 
-$token = csrf_token();
+$token = csrfToken();
 ?>
 
 <h2>Zarejestruj sie</h2>

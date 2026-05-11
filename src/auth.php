@@ -42,4 +42,18 @@ function requireLogin(): void
     }
 }
 
+function resetPassword(string $email, string $newpass): void
+{
+  global $pdo;
+  
+  $stmt = $pdo->prepare(
+    "UPDATE users SET password = :password WHERE email = :email"  
+  );
+  
+  $stmt->execute([
+    'email' => $email,
+    'newpass' => password_hash($newpass, PASSWORD_DEFAULT)  
+  ]);
+}
+
 ?>

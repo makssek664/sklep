@@ -8,7 +8,7 @@ $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    if (!csrf_verify($_POST['csrf'] ?? '')) {
+    if (!csrfVerify($_POST['csrf'] ?? '')) {
         die('CSRF validation failed');
     }
 
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $error = 'Nieprawidłowe hasło lub email.';
 }
 
-$token = csrf_token();
+$token = csrfToken();
 ?>
 
 <h2>Login</h2>
@@ -46,5 +46,6 @@ $token = csrf_token();
 </form>
 
 <p>
-    lub <a href="register.php">zarejestruj sie</a>
+    lub <a href="register.php">zarejestruj sie</a>.
+    Nie pamiętasz hasła? <a href="reset.php">zresetuj je</a>.
 </p>
