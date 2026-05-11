@@ -39,9 +39,12 @@ $token = csrf_token();
     <label>Email</label><br>
     <input type="email" name="email" required><br><br>
 
-    <label>Password</label><br>
+    <label>Haslo</label><br>
     <input type="password" name="password" required><br><br>
 
     <button type="submit">Login</button>
-
 </form>
+
+<p>
+    lub <a href="register.php">zarejestruj sie</a>
+</p>
