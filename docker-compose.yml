@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  php:
+    image: php:8.2-apache
+    container_name: php-dev
+    ports:
+      - "8080:80"   # Maps host port 8080 to container port 80
+    volumes:
+      - ./src:/var/www/html   # Mount your local code
+      - ./php.ini:/usr/local/etc/php/php.ini  # Optional custom PHP config
+    environment:
+      - APACHE_RUN_USER=www-data
+      - APACHE_RUN_GROUP=www-data
+    restart: always
+
+  db:
+    image: mysql:8.0
+    container_name: mysql-dev
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dev_db
+      MYSQL_USER: devuser
+      MYSQL_PASSWORD: devpass
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+
+volumes:
+  db_data:
