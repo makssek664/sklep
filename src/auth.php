@@ -52,7 +52,7 @@ function resetPassword(string $email, string $newpass): void
   
   $stmt->execute([
     'email' => $email,
-    'newpass' => password_hash($newpass, PASSWORD_DEFAULT)  
+    'password' => password_hash($newpass, PASSWORD_DEFAULT)  
   ]);
 }
 

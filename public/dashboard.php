@@ -7,7 +7,10 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 ?>
-
-<title>
-  Sklep z częściami komputerowymi oraz sprzętem sieciowym.
-</title>
+<html>
+  <body>
+    <title>
+      Sklep z częściami komputerowymi oraz sprzętem sieciowym.
+    </title>
+  </body>
+</html>

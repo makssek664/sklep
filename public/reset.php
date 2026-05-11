@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../src/csrf.php';
+require_once __DIR__ . '/../src/auth.php';
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -18,8 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   try {
     resetPassword($email, $newpass);
   } catch (PDOException $e) {
-    $error = "Nie udało sie zresetować hasła.";    
+    $error = "Nie udało sie zresetować hasła. $e";    
   }
+
+  header('Location: login.php');
+  exit;
 }
 
 $token = csrfToken();
