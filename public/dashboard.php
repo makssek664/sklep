@@ -9,8 +9,8 @@ if (!isset($_SESSION['user_id'])) {
 ?>
 <html>
   <body>
-    <title>
+    <h1>
       Sklep z częściami komputerowymi oraz sprzętem sieciowym.
-    </title>
+    </h1>
   </body>
 </html>
