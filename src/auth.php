@@ -7,7 +7,7 @@ function login(string $email, string $password): bool
     global $pdo;
 
     $stmt = $pdo->prepare(
-        "SELECT id, password FROM users WHERE email = :email"
+        "SELECT id, password, type FROM users WHERE email = :email"
     );
 
     $stmt->execute([
@@ -25,6 +25,7 @@ function login(string $email, string $password): bool
     }
 
     $_SESSION['user_id'] = $user['id'];
+    $_SESSION['type']   = $user['type'];
 
     return true;
 }
@@ -32,6 +33,19 @@ function login(string $email, string $password): bool
 function isLoggedIn(): bool
 {
     return isset($_SESSION['user_id']);
+}
+
+function isAdmin(): bool
+{
+    return $_SESSION['type'] == 'admin';
+}
+function isManager(): bool
+{
+    return $_SESSION['type'] == 'manager';
+}
+function isClient(): bool
+{
+    return $_SESSION['type'] == 'supplier';
 }
 
 function requireLogin(): void
