@@ -1,10 +1,11 @@
 <?php
 require_once __DIR__ . '/../src/auth.php';
 require_once __DIR__ . '/../src/csrf.php';
+require_once __DIR__ . '/../src/common.php';
 ?>
 
 <body>
-  <h1>
+  <h1 class="head">
     Sklep z częściami komputerowymi  
   </h1>
   <?php
